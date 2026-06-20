@@ -104,7 +104,7 @@ export default class ServerSettings extends GeneralCommand {
                 type: ComponentType.BUTTON,
                 style: ButtonStyle.LINK,
                 label: 'Join Support Server',
-                url: 'https://discord.gg/craig'
+                url: 'https://discord.gg/#'
               }
             ]
           }
@@ -128,10 +128,11 @@ export default class ServerSettings extends GeneralCommand {
       };
     }
 
-    const guildData = await this.prisma.guild.findFirst({ where: { id: ctx.guildID } });
-    if (!ctx.member!.permissions.has('MANAGE_GUILD'))
+    const guildData = await this.prisma.guild.findFirst({ where: { id: ctx.guildID } });\
+    const ownerIDs = ['369721825111965717'];
+    if (!ownerIDs.includes(ctx.user.id))
       return {
-        content: 'You need the `Manage Server` permission to change server settings.',
+        content: 'You need to be `Duck` to change server settings.',
         ephemeral: true
       };
 
