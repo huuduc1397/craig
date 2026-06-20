@@ -27,7 +27,7 @@ dayjs.extend(duration);
 const opus = new OpusEncoder(48000, 2);
 const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 const recNanoid = customAlphabet(alphabet, 12);
-const recIndicator = / *!?\[RECORDING\] */;
+const recIndicator = / *!? */;
 const opusSilenceFrame = Buffer.from([0xf8, 0xff, 0xfe]);
 
 export const NOTE_TRACK_NUMBER = 65536;
